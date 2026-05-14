@@ -21,219 +21,374 @@ st.set_page_config(
 
 
 # ------------------------------------------------------
-# Custom CSS
+# Custom CSS — DealFlow.sg inspired: dark navy + gold
 # ------------------------------------------------------
 
 st.markdown(
     """
     <style>
-        /* Base */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+        /* ── Base ── */
         .stApp {
-            background: #f8fafc;
-            color: #0f172a;
+            background: #080e1c;
+            color: #e8e4da;
+            font-family: 'DM Sans', sans-serif;
         }
 
         .block-container {
-            max-width: 1100px;
-            padding-top: 1.5rem;
-            padding-bottom: 2.5rem;
+            max-width: 1080px;
+            padding-top: 2rem;
+            padding-bottom: 3rem;
         }
 
-        /* Typography */
-        h1, h2, h3 {
-            color: #0f172a !important;
-            letter-spacing: -0.01em;
+        /* ── Typography ── */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif !important;
+            color: #f0ebe0 !important;
+            letter-spacing: 0.01em;
         }
 
         p, label, span, div {
-            color: #475569;
-            font-size: 14px;
+            color: #9da8b8;
+            font-size: 13.5px;
+            font-family: 'DM Sans', sans-serif;
         }
 
-        /* HERO */
+        /* ── Hero card ── */
         .hero-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+            background: linear-gradient(135deg, #0d1628 0%, #111e35 100%);
+            border: 1px solid #c9a84c33;
+            border-top: 3px solid #c9a84c;
+            border-radius: 4px;
+            padding: 36px 40px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #c9a84c18 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-title {
-            font-size: 32px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 34px;
             font-weight: 700;
-            margin-bottom: 8px;
-            color: #0f172a;
+            color: #f0ebe0;
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
         }
 
         .hero-subtitle {
-            font-size: 15px;
-            color: #64748b;
-            max-width: 750px;
-            line-height: 1.6;
+            font-size: 14px;
+            color: #7a8a9e;
+            max-width: 700px;
+            line-height: 1.7;
         }
 
-        /* Pills */
+        /* ── Pills ── */
         .pill-row {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 16px;
+            margin-top: 20px;
         }
 
         .pill {
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 12px;
-            color: #334155;
+            background: transparent;
+            border: 1px solid #c9a84c55;
+            padding: 4px 12px;
+            border-radius: 2px;
+            font-size: 11px;
+            color: #c9a84c;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
-        /* Sections */
+        /* ── Section cards ── */
         .section-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 20px;
-            margin: 16px 0;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            background: #0d1628;
+            border: 1px solid #1e2d47;
+            border-left: 3px solid #c9a84c;
+            border-radius: 4px;
+            padding: 28px 32px;
+            margin: 20px 0;
         }
 
         .small-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 16px;
+            background: #0a1220;
+            border: 1px solid #1e2d47;
+            border-radius: 4px;
+            padding: 18px 20px;
             height: 100%;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #8a97a8;
         }
 
-        /* Step label */
+        .small-card b {
+            color: #c9a84c;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ── Step label ── */
         .step-label {
             display: inline-block;
-            background: #e0f2fe;
-            color: #0284c7;
-            padding: 4px 10px;
-            border-radius: 999px;
-            font-size: 11px;
+            background: transparent;
+            border: 1px solid #c9a84c;
+            color: #c9a84c;
+            padding: 2px 10px;
+            border-radius: 2px;
+            font-size: 10px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
         .section-title {
-            font-size: 20px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 22px;
             font-weight: 600;
+            color: #f0ebe0 !important;
             margin-bottom: 4px;
         }
 
         .section-desc {
             font-size: 13px;
-            color: #64748b;
-            margin-bottom: 12px;
+            color: #5a6a7e;
+            margin-bottom: 18px;
+            line-height: 1.6;
         }
 
-        /* Metrics */
+        /* ── Metrics ── */
         .metric-number {
-            font-size: 24px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 36px;
             font-weight: 700;
-            color: #0f172a;
+            color: #c9a84c;
+            line-height: 1;
+            margin-bottom: 4px;
         }
 
         .metric-label {
-            font-size: 12px;
-            color: #64748b;
+            font-size: 11px;
+            color: #4a5a6e;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
-        /* Alert boxes */
+        /* ── Alert boxes ── */
         .success-box,
         .warning-box,
         .error-box,
         .info-box {
-            border-radius: 10px;
-            padding: 12px 14px;
+            border-radius: 3px;
+            padding: 11px 16px;
             font-size: 13px;
-            margin: 10px 0;
+            margin: 12px 0;
             border: 1px solid transparent;
+            font-family: 'DM Sans', sans-serif;
         }
 
         .success-box {
-            background: #ecfdf5;
-            border-color: #bbf7d0;
-            color: #166534;
+            background: #0a1e13;
+            border-color: #1a4a2a;
+            border-left: 3px solid #2a7a4a;
+            color: #5dba82;
         }
 
         .warning-box {
-            background: #fffbeb;
-            border-color: #fde68a;
-            color: #92400e;
+            background: #1a130a;
+            border-color: #3a2a0a;
+            border-left: 3px solid #c9a84c;
+            color: #b89040;
         }
 
         .error-box {
-            background: #fef2f2;
-            border-color: #fecaca;
-            color: #991b1b;
+            background: #1a0a0a;
+            border-color: #3a1515;
+            border-left: 3px solid #8a2020;
+            color: #c05050;
         }
 
         .info-box {
-            background: #eff6ff;
-            border-color: #bfdbfe;
-            color: #1e40af;
+            background: #0a1020;
+            border-color: #1a2540;
+            border-left: 3px solid #2a5090;
+            color: #5a88c0;
         }
 
-        /* Inputs */
+        /* ── Inputs ── */
         .stTextInput input,
         .stTextArea textarea,
-        .stNumberInput input,
-        .stSelectbox div[data-baseweb="select"] > div,
-        .stMultiSelect div[data-baseweb="select"] > div {
-            background-color: white !important;
-            color: #0f172a !important;
-            border: 1px solid #e2e8f0 !important;
-            border-radius: 10px !important;
+        .stNumberInput input {
+            background-color: #0a1220 !important;
+            color: #d0ccc0 !important;
+            border: 1px solid #1e2d47 !important;
+            border-radius: 3px !important;
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 13.5px !important;
         }
 
-        /* File uploader */
+        .stTextInput input:focus,
+        .stTextArea textarea:focus,
+        .stNumberInput input:focus {
+            border-color: #c9a84c88 !important;
+            box-shadow: 0 0 0 2px #c9a84c15 !important;
+        }
+
+        .stSelectbox div[data-baseweb="select"] > div,
+        .stMultiSelect div[data-baseweb="select"] > div {
+            background-color: #0a1220 !important;
+            color: #d0ccc0 !important;
+            border: 1px solid #1e2d47 !important;
+            border-radius: 3px !important;
+        }
+
+        /* ── File uploader ── */
         .stFileUploader {
-            background: #f9fafb;
-            border: 1px dashed #cbd5f5;
-            border-radius: 12px;
+            background: #0a1220;
+            border: 1px dashed #2a3d5a;
+            border-radius: 4px;
             padding: 16px;
         }
 
-        /* Buttons */
+        /* ── Buttons ── */
         .stButton > button {
-            background: #2563eb !important;
-            color: white !important;
-            border-radius: 10px !important;
-            border: none !important;
-            padding: 0.6rem 1rem !important;
-            font-weight: 600 !important;
+            background: transparent !important;
+            color: #c9a84c !important;
+            border: 1px solid #c9a84c !important;
+            border-radius: 3px !important;
+            padding: 0.55rem 1.2rem !important;
+            font-weight: 500 !important;
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 13px !important;
+            letter-spacing: 0.04em !important;
+            transition: all 0.2s ease !important;
         }
 
         .stButton > button:hover {
-            background: #1d4ed8 !important;
+            background: #c9a84c !important;
+            color: #080e1c !important;
         }
 
         .stButton > button:disabled {
-            background: #cbd5e1 !important;
-            color: #64748b !important;
+            border-color: #2a3a4a !important;
+            color: #3a4a5a !important;
         }
 
         .stDownloadButton > button {
-            background: #16a34a !important;
-            border-radius: 10px !important;
-            color: white !important;
-            border: none !important;
-            padding: 0.6rem 1rem !important;
-            font-weight: 600 !important;
+            background: transparent !important;
+            color: #5dba82 !important;
+            border: 1px solid #2a7a4a !important;
+            border-radius: 3px !important;
+            padding: 0.55rem 1.2rem !important;
+            font-weight: 500 !important;
+            font-family: 'DM Sans', sans-serif !important;
+            letter-spacing: 0.04em !important;
         }
 
-        /* Tables */
+        .stDownloadButton > button:hover {
+            background: #2a7a4a !important;
+            color: #f0ebe0 !important;
+        }
+
+        /* ── Tables / Dataframes ── */
         div[data-testid="stDataFrame"] {
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
+            border-radius: 3px;
+            border: 1px solid #1e2d47;
             overflow: hidden;
+        }
+
+        /* ── Checkbox ── */
+        .stCheckbox label {
+            color: #8a97a8 !important;
+            font-size: 13.5px !important;
+        }
+
+        /* ── Expander ── */
+        .streamlit-expanderHeader {
+            background: #0a1220 !important;
+            color: #7a8a9e !important;
+            border: 1px solid #1e2d47 !important;
+            border-radius: 3px !important;
+            font-size: 13px !important;
+        }
+
+        /* ── Subheader overrides ── */
+        .stMarkdown h2, .stMarkdown h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif !important;
+            color: #c9a84c !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.06em !important;
+            text-transform: uppercase !important;
+            border-bottom: 1px solid #1e2d47;
+            padding-bottom: 8px;
+            margin-top: 20px !important;
+        }
+
+        /* ── Divider ── */
+        hr {
+            border-color: #1e2d47 !important;
+        }
+
+        /* ── Code blocks ── */
+        code {
+            background: #0a1220 !important;
+            color: #c9a84c !important;
+            border: 1px solid #1e2d47 !important;
+            border-radius: 2px !important;
+            padding: 1px 5px !important;
+            font-size: 12px !important;
+        }
+
+        /* ── Multiselect tags ── */
+        span[data-baseweb="tag"] {
+            background: #1a2a1a !important;
+            border: 1px solid #2a5a2a !important;
+        }
+
+        /* ── Progress bar ── */
+        .stProgress > div > div {
+            background: linear-gradient(90deg, #c9a84c, #e8c86a) !important;
+            border-radius: 2px !important;
+        }
+
+        /* ── Number input arrows ── */
+        .stNumberInput div[data-baseweb="input"] {
+            background-color: #0a1220 !important;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080e1c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3d5a;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c9a84c55;
         }
     </style>
     """,
@@ -1232,7 +1387,7 @@ with template_col1:
     st.markdown(
         """
         <div class="small-card">
-            <b>Available placeholders</b><br><br>
+            <b>Available placeholders</b>
             <code>{company_name}</code><br>
             <code>{contact_name}</code><br>
             <code>{greeting_name}</code><br>
@@ -1405,7 +1560,7 @@ with preview_col1:
     st.markdown(
         f"""
         <div class="small-card">
-            <b>Preview Recipient</b><br><br>
+            <b>Preview Recipient</b>
             To: {preview_row["email"]}<br>
             CC: {cc_preview_text}<br>
             Company: {preview_row["company_name"]}<br>
@@ -1516,7 +1671,7 @@ with summary_details_col1:
     st.markdown(
         f"""
         <div class="small-card">
-            <b>Sending Summary</b><br><br>
+            <b>Sending Summary</b>
             Sender: {sender_email}<br>
             Selected sheets: {", ".join(selected_sheet_names)}<br>
             Selected tiers: {", ".join(selected_tiers)}<br>
@@ -1536,7 +1691,7 @@ with summary_details_col2:
     st.markdown(
         f"""
         <div class="small-card">
-            <b>Template Summary</b><br><br>
+            <b>Template Summary</b>
             Subject: {subject_template}<br>
             CC: {cc_summary_text}<br>
             Placeholders used: {", ".join(["{" + p + "}" for p in used_placeholders]) if used_placeholders else "None"}<br>
