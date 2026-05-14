@@ -1226,7 +1226,7 @@ template_col1, template_col2 = st.columns([1, 1])
 with template_col1:
     subject_template = st.text_input(
         "Subject template",
-        value="Introductory Discussion with {company_name}"
+        value="Placeholder Subject for {company_name}"
     )
 
     st.markdown(
@@ -1259,14 +1259,8 @@ with template_col2:
         "Body template",
         value="""Dear {greeting_name},
 
-I hope you are doing well.
-
-I am reaching out from DealFlow.sg regarding a potential strategic partnership opportunity involving {company_name}.
-
-We are currently supporting a leading international group exploring expansion opportunities across Southeast Asia, and would be keen to explore whether there may be room for an introductory discussion.
-
-Best regards,
-Dan""",
+This is a placeholder template for the email.
+Please change it accordingly for your needs""",
         height=330
     )
 
